@@ -1,3 +1,5 @@
 /mods-mvn
 /libs
 */target
+.idea
+asteroids.jpms.iml

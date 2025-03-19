@@ -23,6 +23,7 @@
         <module>Bullet</module>
         <module>Enemy</module>
         <module>Collision</module>
+        <module>AsteroidDuplicate</module>
     </modules>
     <properties>
         <java>java</java>
