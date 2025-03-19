@@ -7,9 +7,15 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
+
+import java.lang.module.Configuration;
+import java.lang.module.ModuleFinder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Map;
 import java.util.ServiceLoader;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import static java.util.stream.Collectors.toList;
 import javafx.animation.AnimationTimer;
@@ -80,7 +86,8 @@ public class Main extends Application {
         });
 
         // Lookup all Game Plugins using ServiceLoader
-        for (IGamePluginService iGamePlugin : getPluginServices()) {
+        // The updated method finds all the plugins in both the boot layer and the added plugins folder.
+        for (IGamePluginService iGamePlugin : getPlugins()) {
             iGamePlugin.start(gameData, world);
         }
         for (Entity entity : world.getEntities()) {
@@ -151,5 +158,17 @@ public class Main extends Application {
 
     private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {
         return ServiceLoader.load(IPostEntityProcessingService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+    }
+
+    private Collection<? extends IGamePluginService> getPlugins() {
+        ModuleFinder finder = ModuleFinder.of(Paths.get("plugins"));
+        ModuleLayer parent = ModuleLayer.boot();
+        Configuration config = parent.configuration().resolve(finder, ModuleFinder.of(), Set.of("AsteroidDuplicate"));
+
+        ModuleLayer layer = parent.defineModulesWithOneLoader(config, ClassLoader.getSystemClassLoader());
+
+        return ServiceLoader.load(layer, IGamePluginService.class).stream()
+                .map(ServiceLoader.Provider::get)
+                .collect(toList());
     }
 }
