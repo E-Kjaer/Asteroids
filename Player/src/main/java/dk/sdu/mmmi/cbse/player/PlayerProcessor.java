@@ -30,7 +30,9 @@ public class PlayerProcessor implements IEntityProcessingService {
                 player.setY(player.getY() + changeY);
             }
             if (gameData.getKeys().isDown(GameKeys.SPACE)) {
-                if (getBulletSPIs().stream().findFirst().isPresent()) {
+                Player p = (Player) player;
+                if (getBulletSPIs().stream().findFirst().isPresent() && (System.currentTimeMillis() - p.getLastShot() > p.getBulletCooldown())) {
+                    p.setLastShot(System.currentTimeMillis());
                     world.addEntity(getBulletSPIs().stream().findFirst().get().createBullet(player, gameData));
                 }
             }
