@@ -12,9 +12,9 @@ import java.util.Random;
 public class AsteroidGamePlugin implements IGamePluginService {
     @Override
     public void start(GameData gameData, World world) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 25; i++) {
             Random rnd = new Random();
-            Entity a = createAsteroid(i * 10, i * 10, rnd.nextInt(360), new int[]{i * 20, i * 30, i* 50});
+            Entity a = createAsteroid(rnd.nextInt(gameData.getDisplayWidth()), rnd.nextInt(gameData.getDisplayHeight()), rnd.nextInt(360), new int[]{i * 20, i * 30, i* 50});
             world.addEntity(a);
         }
     }

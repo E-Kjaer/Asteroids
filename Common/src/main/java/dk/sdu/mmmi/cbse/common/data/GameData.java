@@ -5,6 +5,7 @@ public class GameData {
     private int displayWidth  = 800 ;
     private int displayHeight = 800;
     private final GameKeys keys = new GameKeys();
+    private int asteroidsKilled = 0;
 
 
     public GameKeys getKeys() {
@@ -27,5 +28,11 @@ public class GameData {
         return displayHeight;
     }
 
+    public int getAsteroidsKilled() {
+        return asteroidsKilled;
+    }
 
+    public void setAsteroidsKilled(int asteroidsKilled) {
+        this.asteroidsKilled = asteroidsKilled;
+    }
 }

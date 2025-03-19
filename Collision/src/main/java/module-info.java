@@ -1,7 +1,5 @@
-import dk.sdu.mmmi.cbse.collision.CollisionHandler;
 import dk.sdu.mmmi.cbse.collision.CollisionProcessor;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import dk.sdu.mmmi.cbse.commonCollision.ICollisionHandler;
 
 module Collision {
     requires Common;
@@ -10,5 +8,6 @@ module Collision {
     requires CommonPlayer;
     requires CommonAsteroid;
     requires CommonCollision;
+    uses dk.sdu.mmmi.cbse.commonAsteroid.IAsteroidSplitter;
     provides IEntityProcessingService with CollisionProcessor;
 }
