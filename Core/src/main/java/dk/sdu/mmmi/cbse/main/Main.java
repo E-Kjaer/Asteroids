@@ -40,6 +40,14 @@ public class Main extends Application {
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
         gameWindow.getChildren().add(scoreText);
 
+        gameWindow.heightProperty().addListener(((observableValue, oldValue, newValue) -> {
+            gameData.setDisplayHeight(newValue.intValue());
+        }));
+
+        gameWindow.widthProperty().addListener(((observableValue, oldValue, newValue) -> {
+            gameData.setDisplayWidth(newValue.intValue());
+        }));
+
         Scene scene = new Scene(gameWindow);
         scene.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.LEFT)) {
