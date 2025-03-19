@@ -14,7 +14,9 @@
         <module>Core</module>
         <module>Common</module>
         <module>CommonAsteroid</module>
+        <module>CommonPlayer</module>
         <module>Asteroid</module>
+        <module>Player</module>
     </modules>
     <properties>
         <java>java</java>
