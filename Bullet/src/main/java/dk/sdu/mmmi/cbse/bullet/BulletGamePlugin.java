@@ -26,6 +26,7 @@ public class BulletGamePlugin implements IGamePluginService, IBulletSPI {
         bullet.setRotation(e.getRotation());
         bullet.setPolygonCoordinates(1, 1, -3, 1, -3, -1, 1, -1);
         bullet.setColor(new int[]{255, 255, 255});
+        bullet.setRadius(1);
         return bullet;
     }
 }
