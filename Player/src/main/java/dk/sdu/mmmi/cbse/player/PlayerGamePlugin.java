@@ -10,7 +10,8 @@ public class PlayerGamePlugin implements IGamePluginService {
     @Override
     public void start(GameData gameData, World world) {
         Entity player = new Player();
-        player.setPolygonCoordinates(15, 0, 3, 3, -3, 9, -3, 3, -9, 0, -3, -3, -3, -9, 3, -3);
+        //player.setPolygonCoordinates(15, 0, 3, 3, -3, 9, -3, 3, -9, 0, -3, -3, -3, -9, 3, -3);
+        player.setPolygonCoordinates(11, 0, -1, 3, -7, 9, -7, 3, -13, 0, -7, -3, -7, -9, -1, -3);
         player.setColor(new int[]{0, 0 , 254});
         player.setY(gameData.getDisplayHeight() / 2);
         player.setX(gameData.getDisplayWidth() / 2);

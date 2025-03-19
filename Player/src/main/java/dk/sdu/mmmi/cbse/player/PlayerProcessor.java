@@ -29,7 +29,7 @@ public class PlayerProcessor implements IEntityProcessingService {
                 player.setX(player.getX() + changeX);
                 player.setY(player.getY() + changeY);
             }
-            if(gameData.getKeys().isDown(GameKeys.SPACE)) {
+            if (gameData.getKeys().isDown(GameKeys.SPACE)) {
                 if (getBulletSPIs().stream().findFirst().isPresent()) {
                     world.addEntity(getBulletSPIs().stream().findFirst().get().createBullet(player, gameData));
                 }
