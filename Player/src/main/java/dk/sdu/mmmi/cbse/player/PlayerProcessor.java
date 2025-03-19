@@ -5,7 +5,13 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.GameKeys;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.commonBullet.IBulletSPI;
 import dk.sdu.mmmi.cbse.commonPlayer.Player;
+
+import java.util.Collection;
+import java.util.ServiceLoader;
+
+import static java.util.stream.Collectors.toList;
 
 public class PlayerProcessor implements IEntityProcessingService {
     @Override
@@ -24,7 +30,9 @@ public class PlayerProcessor implements IEntityProcessingService {
                 player.setY(player.getY() + changeY);
             }
             if(gameData.getKeys().isDown(GameKeys.SPACE)) {
-                System.out.println("PEW");
+                if (getBulletSPIs().stream().findFirst().isPresent()) {
+                    world.addEntity(getBulletSPIs().stream().findFirst().get().createBullet(player, gameData));
+                }
             }
 
             if (player.getX() < 0) {
@@ -43,5 +51,9 @@ public class PlayerProcessor implements IEntityProcessingService {
                 player.setY(gameData.getDisplayHeight()-1);
             }
         }
+    }
+
+    private Collection<? extends IBulletSPI> getBulletSPIs() {
+        return ServiceLoader.load(IBulletSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
 }
