@@ -15,8 +15,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -26,17 +29,13 @@ public class Game {
     private final Map<Entity, Polygon> polygons = new ConcurrentHashMap<>();
     private final Pane gameWindow = new Pane();
     private final Text scoreText = new Text(10, 20, "Destroyed asteroids: 0");
+    @Autowired
     private Collection<IEntityProcessingService> entityProcessingServices;
+    @Autowired
     private Collection<IPostEntityProcessingService> postEntityProcessingServices;
+    @Autowired
     private Collection<IGamePluginService> gamePluginServices;
 
-    public Game(Collection<IEntityProcessingService> entityProcessingServices,
-                Collection<IPostEntityProcessingService> postEntityProcessingServices,
-                Collection<IGamePluginService> gamePluginServices) {
-        this.entityProcessingServices = entityProcessingServices;
-        this.postEntityProcessingServices = postEntityProcessingServices;
-        this.gamePluginServices = gamePluginServices;
-    }
 
     public void start(Stage window) throws Exception {
         //Text text = new Text(10, 20, "Destroyed asteroids: 0");

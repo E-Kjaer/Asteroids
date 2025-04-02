@@ -18,7 +18,7 @@ public class SpringConfigurator {
 
     @Bean
     Game game() {
-        return new Game(entityProcessingServiceList(), postEntityProcessingServices(), gamePluginServices());
+        return new Game();
     }
 
     @Bean
