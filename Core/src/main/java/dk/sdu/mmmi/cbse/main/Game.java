@@ -29,13 +29,23 @@ public class Game {
     private final Map<Entity, Polygon> polygons = new ConcurrentHashMap<>();
     private final Pane gameWindow = new Pane();
     private final Text scoreText = new Text(10, 20, "Destroyed asteroids: 0");
-    @Autowired
+    
     private Collection<IEntityProcessingService> entityProcessingServices;
-    @Autowired
     private Collection<IPostEntityProcessingService> postEntityProcessingServices;
-    @Autowired
     private Collection<IGamePluginService> gamePluginServices;
 
+    @Autowired
+    public void setEntityProcessingServices(Collection<IEntityProcessingService> entityProcessingServices) {
+        this.entityProcessingServices = entityProcessingServices;
+    }
+    @Autowired
+    public void setPostEntityProcessingServices(Collection<IPostEntityProcessingService> postEntityProcessingServices) {
+        this.postEntityProcessingServices = postEntityProcessingServices;
+    }
+    @Autowired
+    public void setGamePluginServices(Collection<IGamePluginService> gamePluginServices) {
+        this.gamePluginServices = gamePluginServices;
+    }
 
     public void start(Stage window) throws Exception {
         //Text text = new Text(10, 20, "Destroyed asteroids: 0");
