@@ -18,6 +18,8 @@ public class PlayerGamePlugin implements IGamePluginService {
         player.setRotation(-90);
         player.setBulletCooldown(100);
         player.setRadius(5);
+        player.setHealth(10);
+        player.setDamage(5);
         world.addEntity(player);
     }
 

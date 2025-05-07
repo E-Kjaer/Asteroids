@@ -6,6 +6,7 @@ import dk.sdu.mmmi.cbse.commonCollision.ICollidable;
 
 public class Bullet extends Entity implements ICollidable {
     private Entity owner;
+
     @Override
     public CollisionType getCollisionType() {
         return CollisionType.BULLET;

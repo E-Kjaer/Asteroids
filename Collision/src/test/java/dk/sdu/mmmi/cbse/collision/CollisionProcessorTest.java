@@ -24,16 +24,21 @@ class CollisionProcessorTest {
     }
 
     @Test
-    public void testBulletRemovesEnemy() {
+    public void testBulletDamagesEnemy() {
+        int damage = 5;
+        int health = 10;
+
         Bullet bullet = new Bullet();
         bullet.setX(0);
         bullet.setY(0);
         bullet.setRadius(1);
+        bullet.setDamage(damage);
 
         Entity enemy = new Enemy();
         enemy.setX(0);
         enemy.setY(0);
         enemy.setRadius(1);
+        enemy.setHealth(health);
 
         world.addEntity(bullet);
         world.addEntity(enemy);
@@ -43,21 +48,29 @@ class CollisionProcessorTest {
 
         collisionProcessor.process(gameData, world);
 
-        assertTrue(world.getEntities().contains(bullet));
-        assertFalse(world.getEntities().contains(enemy));
+        assertEquals(health - damage, enemy.getHealth());
     }
 
     @Test
-    public void testPlayerEnemyCollisionRemovesBoth() {
+    public void testPlayerEnemyCollisionDamagesBoth() {
+        int enemyDamage = 5;
+        int enemyHealth = 10;
+        int playerDamage = 5;
+        int playerHealth = 10;
+
         Entity enemy = new Enemy();
         enemy.setX(0);
         enemy.setY(0);
         enemy.setRadius(1);
+        enemy.setHealth(enemyHealth);
+        enemy.setDamage(enemyDamage);
 
         Entity player = new Player();
         player.setX(0);
         player.setY(0);
         player.setRadius(1);
+        player.setHealth(playerHealth);
+        player.setDamage(playerDamage);
 
         world.addEntity(enemy);
         world.addEntity(player);
@@ -67,7 +80,7 @@ class CollisionProcessorTest {
 
         collisionProcessor.process(gameData, world);
 
-        assertFalse(world.getEntities().contains(player));
-        assertFalse(world.getEntities().contains(enemy));
+        assertEquals(playerHealth - enemyDamage, player.getHealth());
+        assertEquals(enemyHealth - playerDamage, enemy.getHealth());
     }
 }

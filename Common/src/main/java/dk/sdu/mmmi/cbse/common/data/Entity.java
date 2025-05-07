@@ -13,6 +13,8 @@ public class Entity implements Serializable {
     private double rotation;
     private float radius;
     private int[] color = new int[]{0, 0, 0};
+    private int health = 1;
+    private int damage;
             
 
     public String getID() {
@@ -69,5 +71,25 @@ public class Entity implements Serializable {
 
     public int[] getColor() {
         return this.color;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void takeDamage(int damage) {
+        this.health -= damage;
     }
 }

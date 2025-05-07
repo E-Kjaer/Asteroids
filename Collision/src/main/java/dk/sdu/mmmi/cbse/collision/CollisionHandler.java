@@ -36,16 +36,22 @@ public class CollisionHandler implements ICollisionHandler {
                 }
             }
             if (ce1.getCollisionType() == CollisionType.BULLET && ce2.getCollisionType() == CollisionType.ENTITY) {
-                world.removeEntity(e2);
+                e2.takeDamage(e1.getDamage());
             }
             if (ce1.getCollisionType() == CollisionType.ASTEROID && ce2.getCollisionType() == CollisionType.ENTITY) {
-                world.removeEntity(e2);
+                e2.takeDamage(e1.getDamage());
             }
             if (ce1.getCollisionType() == CollisionType.ENTITY && ce2.getCollisionType() == CollisionType.ENTITY) {
-                world.removeEntity(e1);
-                world.removeEntity(e2);
+                // Since the collision will also be handled for the other entity
+                e1.takeDamage(e2.getDamage());
             }
 
+        }
+        if (e1.getHealth() <= 0) {
+            world.removeEntity(e1);
+        }
+        if (e2.getHealth() <= 0) {
+            world.removeEntity(e2);
         }
     }
 
