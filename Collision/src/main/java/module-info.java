@@ -8,6 +8,8 @@ module Collision {
     requires CommonPlayer;
     requires CommonAsteroid;
     requires CommonCollision;
+    requires CommonStar;
+
     uses dk.sdu.mmmi.cbse.commonAsteroid.IAsteroidSplitter;
     provides IEntityProcessingService with CollisionProcessor;
 }

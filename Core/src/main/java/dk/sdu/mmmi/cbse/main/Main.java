@@ -48,6 +48,9 @@ public class Main extends Application {
             gameData.setDisplayWidth(newValue.intValue());
         }));
 
+        gameWindow.setStyle("-fx-background-color: rgb(0,0,0);");
+        scoreText.setFill(Color.WHITE);
+
         Scene scene = new Scene(gameWindow);
         scene.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.LEFT)) {

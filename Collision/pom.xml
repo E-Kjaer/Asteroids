@@ -38,6 +38,11 @@
         </dependency>
         <dependency>
             <groupId>dk.sdu.mmmi.cbse</groupId>
+            <artifactId>CommonStar</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.mmmi.cbse</groupId>
             <artifactId>CommonCollision</artifactId>
             <version>1.0.1-SNAPSHOT</version>
         </dependency>
