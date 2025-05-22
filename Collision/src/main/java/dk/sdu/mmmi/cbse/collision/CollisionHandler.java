@@ -10,6 +10,7 @@ import dk.sdu.mmmi.cbse.commonCollision.CollisionType;
 import dk.sdu.mmmi.cbse.commonCollision.ICollidable;
 import dk.sdu.mmmi.cbse.commonCollision.ICollisionHandler;
 import dk.sdu.mmmi.cbse.commonPlayer.Player;
+import dk.sdu.mmmi.cbse.commonscoring.IScoringSPI;
 
 import java.util.Collection;
 import java.util.ServiceLoader;
@@ -17,6 +18,8 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 public class CollisionHandler implements ICollisionHandler {
+
+
     @Override
     public void handleCollision(Entity e1, Entity e2, GameData gameData, World world) {
         if ((e1 instanceof ICollidable && e2 instanceof ICollidable) && e1 != e2) {
@@ -28,12 +31,10 @@ public class CollisionHandler implements ICollisionHandler {
 
                 Bullet bullet = (Bullet) e1;
                 if (bullet.getOwner() instanceof Player) {
-                    gameData.setAsteroidsKilled(gameData.getAsteroidsKilled() + 1);
+                    getScoringSPI().stream().findFirst().ifPresent(iScoringSPI -> gameData.setAsteroidsKilled(iScoringSPI.updateScore(1)));
                 }
 
-                if (getAsteroidSplitter().stream().findFirst().isPresent()) {
-                    getAsteroidSplitter().stream().findFirst().get().splitAsteroid((Asteroid) e2, gameData, world);
-                }
+                getAsteroidSplitter().stream().findFirst().ifPresent(iAsteroidSplitter -> iAsteroidSplitter.splitAsteroid((Asteroid) e2, gameData, world));
             }
             if (ce1.getCollisionType() == CollisionType.BULLET && ce2.getCollisionType() == CollisionType.ENTITY) {
                 world.removeEntity(e2);
@@ -51,5 +52,9 @@ public class CollisionHandler implements ICollisionHandler {
 
     private Collection<? extends IAsteroidSplitter> getAsteroidSplitter() {
         return ServiceLoader.load(IAsteroidSplitter.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+    }
+
+    private Collection<? extends IScoringSPI> getScoringSPI() {
+        return ServiceLoader.load(IScoringSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
 }

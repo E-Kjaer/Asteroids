@@ -23,6 +23,8 @@
         <module>Bullet</module>
         <module>Enemy</module>
         <module>Collision</module>
+        <module>CommonScoring</module>
+        <module>ScoringAPI</module>
     </modules>
     <properties>
         <java>java</java>

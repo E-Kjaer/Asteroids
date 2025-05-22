@@ -3,3 +3,5 @@
 */target
 .idea
 asteroids.jpms.iml
+.DS_Store
+.gitignore
