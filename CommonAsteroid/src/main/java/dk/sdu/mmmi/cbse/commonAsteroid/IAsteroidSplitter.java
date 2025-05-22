@@ -10,6 +10,11 @@ public interface IAsteroidSplitter {
     /**
      * Method for splitting asteroid
      *
+     * <p>
+     * Precondition: Asteroid must have been hit by a bullet
+     * <p>
+     * Postcondition: Asteroid must have been split
+     *
      * @param asteroid Asteroid to be split
      * @param gameData GameData object
      * @param world World object

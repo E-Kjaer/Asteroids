@@ -10,6 +10,11 @@ public interface IBulletSPI {
     /**
      * Method for creating a bullet
      *
+     * <p>
+     * Precondition: The provided entity must exist
+     * <p>
+     * Postcondition: A bullet must have been created and returned
+     *
      * @param e Entity that wants to create a bullet
      * @param gameData GameData object
      * @return A new Bullet object

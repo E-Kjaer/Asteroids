@@ -12,6 +12,11 @@ public interface ICollisionHandler {
     /**
      * Method for handling collisions
      *
+     * <p>
+     * Precondition: Entity 1 and 2 must have collided
+     * <p>
+     * Postcondition: The collision must have been handled
+     *
      * @param e1 The first colliding entity
      * @param e2 The second colliding entity
      * @param gameData The GameData object used in the game

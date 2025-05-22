@@ -6,6 +6,7 @@ package dk.sdu.mmmi.cbse.commonCollision;
 public interface ICollidable {
     /**
      * Method for retrieving the collision type of an entity
+     *
      * @return The collision type of the entity
      *
      * @see CollisionType
