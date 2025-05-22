@@ -16,6 +16,10 @@ public interface ICollisionHandler {
      * @param e2 The second colliding entity
      * @param gameData The GameData object used in the game
      * @param world The World object used in the game, this holds all entities
+     *
+     * @see Entity
+     * @see GameData
+     * @see World
      */
     void handleCollision(Entity e1, Entity e2, GameData gameData, World world);
 }

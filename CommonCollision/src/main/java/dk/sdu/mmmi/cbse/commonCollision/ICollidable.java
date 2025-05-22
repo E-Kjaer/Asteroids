@@ -7,6 +7,8 @@ public interface ICollidable {
     /**
      * Method for retrieving the collision type of an entity
      * @return The collision type of the entity
+     *
+     * @see CollisionType
      */
     CollisionType getCollisionType();
 }
