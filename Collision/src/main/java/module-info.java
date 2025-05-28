@@ -1,5 +1,5 @@
 import dk.sdu.mmmi.cbse.collision.CollisionProcessor;
-import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 
 module Collision {
     requires Common;
@@ -11,5 +11,5 @@ module Collision {
     requires CommonStar;
 
     uses dk.sdu.mmmi.cbse.commonAsteroid.IAsteroidSplitter;
-    provides IEntityProcessingService with CollisionProcessor;
+    provides IPostEntityProcessingService with CollisionProcessor;
 }

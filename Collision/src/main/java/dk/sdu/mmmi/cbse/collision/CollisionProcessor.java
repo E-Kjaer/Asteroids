@@ -4,6 +4,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 import dk.sdu.mmmi.cbse.commonCollision.ICollidable;
 import dk.sdu.mmmi.cbse.commonCollision.ICollisionHandler;
 import dk.sdu.mmmi.cbse.commonStar.Star;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class CollisionProcessor implements IEntityProcessingService {
+public class CollisionProcessor implements IPostEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
         Collection<Entity> entities = new ArrayList<>();
