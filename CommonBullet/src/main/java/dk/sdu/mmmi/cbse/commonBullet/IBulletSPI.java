@@ -16,12 +16,10 @@ public interface IBulletSPI {
      * Postcondition: A bullet must have been created and returned
      *
      * @param e Entity that wants to create a bullet
-     * @param gameData GameData object
      * @return A new Bullet object
      *
      * @see Bullet
      * @see Entity
-     * @see GameData
      */
-    Entity createBullet(Entity e, GameData gameData);
+    Entity createBullet(Entity e);
 }

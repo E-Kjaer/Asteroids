@@ -42,7 +42,7 @@ public class EnemyProcessor implements IEntityProcessingService {
 
             if (rnd.nextFloat() < 0.01) {
                 if (getBulletSPIs().stream().findFirst().isPresent()) {
-                    world.addEntity(getBulletSPIs().stream().findFirst().get().createBullet(enemy, gameData));
+                    world.addEntity(getBulletSPIs().stream().findFirst().get().createBullet(enemy));
                 }
             }
         }

@@ -19,7 +19,7 @@ public class BulletGamePlugin implements IGamePluginService, IBulletSPI {
     }
 
     @Override
-    public Entity createBullet(Entity e, GameData gameData) {
+    public Entity createBullet(Entity e) {
         Bullet bullet = new Bullet();
         bullet.setOwner(e);
         bullet.setX(e.getX() + (Math.cos(Math.toRadians(e.getRotation()))) * 10);
