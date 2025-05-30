@@ -12,7 +12,7 @@ public interface IPostEntityProcessingService {
      * <p>
      * Precondition: All entities must have been processed
      * <p>
-     * Postcondition: All extra processing for the entities must have been processed
+     * Postcondition: All extra processing must have been processed
      *
      * @param gameData Data about the screen size and allowed keys
      * @param world Data about the entities in the world
